@@ -1,0 +1,106 @@
+.vs/
+SchoolFeeManagementApi/bin
+SchoolFeeManagementApi/obj
+SchoolFeeManagementApi/Properties
+SchoolFeeManagementApi/SchoolFeeManagementApi.csproj
+SchoolFeeManagementApi/SchoolFeeManagementApi.csproj.user
+SchoolFeeManagementApi/SchoolFeeManagementApi.http
+SchoolFeeManagementApi/appsettings.Development.json
+SchoolFeeManagementApi/appsettings.json
+
+SchoolFeeManagementApi.sln
+
+xUnitTestingSchoolFee/bin
+xUnitTestingSchoolFee/obj
+xUnitTestingSchoolFee/xUnitTestingSchoolFee.csproj
+
+
+# =========================
+# Visual Studio & IDE files
+# =========================
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+
+# =========================
+# Build and output folders
+# =========================
+**/bin/
+**/obj/
+publish/
+dist/
+out/
+
+# =========================
+# ASP.NET Core configuration & secrets
+# =========================
+**/appsettings.Development.json
+**/appsettings.json
+**/SchoolFeeManagementApi.csproj.user
+
+# =========================
+# EF Core Migrations
+# =========================
+**/Migrations/*.Designer.cs
+**/Migrations/*.cs
+**/Migrations/SchoolContextModelSnapshot.cs
+
+# =========================
+# Node / Angular
+# =========================
+node_modules/
+package-lock.json
+dist/
+.angular/
+
+# =========================
+# Test outputs
+# =========================
+**/TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.vsmdi
+
+# =========================
+# Logs and temp files
+# =========================
+*.log
+*.tmp
+*.temp
+*.tlog
+*.cache
+*.pdb
+*.bak
+*.backup
+
+# =========================
+# Editor / OS files
+# =========================
+Thumbs.db
+Desktop.ini
+
+# =========================
+# HTTP request files (optional)
+# =========================
+*.http
+
+# =========================
+# Ignore Angular build artifacts
+# =========================
+**/dist/
+*.tsbuildinfo
+
+/bin
+/obj
+/Properties
+/SchoolFeeManagementApi.csproj.user
+/appsettings*.json
+/Migrations
+
+# Ignore Twilio credentials
+SchoolFeeManagementApi/Utilities/NotifyTwilio.cs

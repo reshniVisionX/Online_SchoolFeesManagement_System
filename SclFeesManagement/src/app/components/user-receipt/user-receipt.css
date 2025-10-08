@@ -1,0 +1,339 @@
+/* Professional Receipt Styles */
+.receipt-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: var(--background-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+.receipt-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-color);
+  padding: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.receipt-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 10px solid var(--secondary-color);
+}
+
+.school-logo-receipt {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  background: var(--logo-color);
+  border-radius: 50%;
+  border: 3px solid var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.school-logo-receipt img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.receipt-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 10px 0;
+  color: var(--title-color);
+  text-shadow: 1px 1px 2px var(--shadow-color);
+}
+
+.receipt-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.receipt-body {
+  padding: 30px;
+}
+
+.receipt-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.info-section {
+  background: var(--logo-color);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+}
+
+.info-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--title-color);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 8px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 5px 0;
+}
+
+.info-label {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.info-value {
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+.payment-details {
+  background: var(--background-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 20px 0;
+}
+
+.payment-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--title-color);
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.payment-table th,
+.payment-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.payment-table th {
+  background: var(--logo-color);
+  font-weight: 600;
+  color: var(--title-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.payment-table td {
+  color: var(--text-color);
+}
+
+.payment-table tr:hover {
+  background: var(--logo-color);
+}
+
+.total-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.total-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.total-amount {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--title-color);
+}
+
+.receipt-footer {
+  background: var(--navbar-bg);
+  padding: 25px;
+  text-align: center;
+  border-top: 2px solid var(--primary-color);
+}
+
+.footer-text {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.receipt-number {
+  font-weight: 600;
+  color: var(--title-color);
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.print-date {
+  font-style: italic;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.btn-print,
+.btn-download {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-print {
+  background: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+}
+
+.btn-download {
+  background: var(--secondary-color);
+  color: white;
+  border: 2px solid var(--secondary-color);
+}
+
+.btn-print:hover,
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Print Styles */
+@media print {
+  .receipt-container {
+    box-shadow: none;
+    border: 1px solid #000;
+    margin: 0;
+    max-width: none;
+  }
+  
+  .action-buttons {
+    display: none;
+  }
+  
+  .receipt-header {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+  }
+  
+  .total-section {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+  }
+  
+  .payment-table th {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .receipt-container {
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  .receipt-info {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .receipt-header {
+    padding: 20px;
+  }
+  
+  .receipt-title {
+    font-size: 1.5rem;
+  }
+  
+  .receipt-body {
+    padding: 20px;
+  }
+  
+  .payment-table {
+    font-size: 0.9rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-print,
+  .btn-download {
+    width: 200px;
+  }
+}
+
+/* Status Indicators */
+.status-paid {
+  background: #4CAF50;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-pending {
+  background: #FF9800;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-overdue {
+  background: #F44336;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

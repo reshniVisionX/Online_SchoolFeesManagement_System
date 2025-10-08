@@ -1,0 +1,306 @@
+/* Professional Fixed Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background:var( --navbar-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-color);
+ 
+  height: 60px;
+  border-radius: 2px;
+  border-color: var( --primary-color);
+  
+}
+
+/* Navbar scroll effect */
+.navbar.scrolled {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--primary-color) 0%, rgba(var(--primary-color-rgb), 0.98) 100%);
+}
+
+/* Left section */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  gap: 16px;
+}
+
+/* Logo styling */
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--logo-color);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* School info container */
+.school-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.school-info .school-name {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--title-color);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s ease;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.school-info .school-address,
+.school-info .school-city,
+.school-info .school-phone,
+.school-info .school-founded {
+  font-size: 11px;
+  color: rgba(var(--text-color-rgb), 0.8);
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.school-info .school-phone {
+  font-weight: 500;
+}
+
+.school-info .school-founded {
+  font-style: italic;
+  color: rgba(var(--text-color-rgb), 0.7);
+}
+
+/* Right section navigation */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-right a {
+  position: relative;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 15px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  font-family:'Times New Roman', Times, serif;
+}
+
+/* Hover effects for navigation links */
+.navbar-right a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-right a:active {
+  transform: translateY(0);
+}
+
+/* Underline animation */
+.navbar-right a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--text-color), transparent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-right a:hover::after {
+  width: 80%;
+}
+
+/* Special styling for logout button */
+.navbar-right a.logout {
+  color: #ff4757;
+  font-weight: 600;
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+.navbar-right a.logout:hover {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff3742;
+  box-shadow: 0 4px 16px rgba(255, 71, 87, 0.3);
+}
+
+.navbar-right a.logout::after {
+  background: linear-gradient(90deg, transparent, #ff4757, transparent);
+}
+
+/* Body padding to account for fixed navbar */
+body {
+  padding-top: 70px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 16px;
+    height: auto;
+    min-height: 60px;
+  }
+  
+  .navbar-left {
+    gap: 12px;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .school-info .school-name {
+    font-size: 16px;
+  }
+  
+  .school-info .school-address,
+  .school-info .school-city,
+  .school-info .school-phone,
+  .school-info .school-founded {
+    font-size: 10px;
+  }
+  
+  .navbar-right {
+    gap: 4px;
+  }
+  
+  .navbar-right a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  body {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+    height: auto;
+    min-height: auto;
+  }
+  
+  .navbar-left {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .navbar-right {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-right a {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  body {
+    padding-top: 120px; /* Adjust based on collapsed navbar height */
+  }
+}
+
+@media (max-width: 480px) {
+  .school-info .school-address,
+  .school-info .school-city {
+    display: none; /* Hide less critical info on very small screens */
+  }
+  
+  .navbar-right a {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Optional: Add a subtle animation when page loads */
+.navbar {
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Focus states for accessibility */
+.navbar-right a:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .navbar {
+    border-bottom: 2px solid var(--text-color);
+  }
+  
+  .navbar-right a {
+    border: 1px solid transparent;
+  }
+  
+  .navbar-right a:hover,
+  .navbar-right a:focus {
+    border-color: var(--text-color);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .logo,
+  .navbar-right a,
+  .navbar-right a::after {
+    transition: none;
+  }
+  
+  .navbar {
+    animation: none;
+  }
+}

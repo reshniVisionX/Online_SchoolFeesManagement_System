@@ -1,0 +1,41 @@
+<div class="login-container">
+  <h2 class="login-title">Login</h2>
+
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <!-- Admission ID -->
+    <div class="form-group">
+ 
+      <input
+        type="text"
+        id="admissionId"
+        name="admissionId"
+        [(ngModel)]="loginData.admissionId"
+        placeholder="Enter the Admission Id"
+        required
+      />
+    </div>
+<br>
+    <!-- Password -->
+  <div class="password-container">
+  <input
+    [type]="showPassword ? 'text' : 'password'"
+    id="password"
+    name="password"
+    [(ngModel)]="loginData.password"
+    placeholder="Enter your password"
+    required
+  />
+  <p  class="toggle-btn" (click)="togglePassword()">
+    <span *ngIf="showPassword">👁️</span>
+    <span *ngIf="!showPassword">👁️‍🗨️</span>
+  </p>
+</div>
+
+<br>
+    <!-- Error message -->
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <!-- Buttons -->
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>

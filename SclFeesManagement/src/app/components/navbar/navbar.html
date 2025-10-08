@@ -1,0 +1,25 @@
+<nav class="navbar">
+<div class="navbar-left">
+  <img [src]="school()?.logo" alt="Logo" class="logo">
+  <div class="school-info">
+    <div class="school-name">{{ school()?.name }}</div>
+    <div class="school-address">{{ school()?.address }}</div>
+    <div class="school-city">{{ school()?.city }}, ph : {{ school()?.phone }}</div>
+    <div class="school-founded">Founded: {{ school()?.foundedAt | date:'yyyy' }}</div>
+  </div>
+</div>
+
+
+  <div class="navbar-right">
+    <a href="/home">ELGI</a>
+    <a href="/courses">Courses</a>
+    <a href="#">Feedbacks</a>
+    <a href="/profile">My Profile</a>
+    <a href="#" class="logout" (click)="logoutUser()">Logout</a>
+<a href="#" (click)="toggleTheme($event)" class="theme-toggle">
+  {{ theme === 'light' ? '🖤' : '🤍' }}
+</a>
+
+  </div>
+
+</nav>

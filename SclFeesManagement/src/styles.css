@@ -1,0 +1,138 @@
+:root {
+  --primary-color: #28a745;       /* vibrant green for buttons, highlights */
+  --secondary-color: #71c562;     /* lighter green for secondary elements/cards */
+  --background-color: #ffffff;    /* clean off-white background */
+  --text-color: #2b2b2b;          /* deep charcoal for readability */
+  --navbar-bg: #e6f4ea;           /* very light green tint for navbar */
+  --title-color: #34d058;         /* bright green for titles/headings */
+  --logo-color: #2f9e44;          /* strong green for logo or icons */
+  --shadow-color: rgba(0, 0, 0, 0.15); /* subtle shadow for depth */
+}
+
+.dark-theme {
+  --primary-color: #28a745;       /* same vibrant green for consistency */
+  --secondary-color: #5ec05e;     /* muted green for dark mode elements */
+  --background-color: #121212;    /* dark background for contrast */
+  --text-color: #f0fdf4;          /* soft ivory/greenish white text */
+  --navbar-bg: #1b3b1b;           /* dark greenish navbar */
+  --title-color: #34d058;         /* bright green stands out on dark */
+  --logo-color: #2f9e44;          /* consistent logo green */
+  --shadow-color: rgba(0, 0, 0, 0.25); /* slightly stronger shadow for dark bg */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.mybtn {
+  color: white;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  min-width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mybtn:hover {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.mybtn:active {
+  transform: translateY(0);
+}
+
+.form-container {
+  background: var(--background-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color), 0.1);
+}
+
+.professional-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--background-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  border: 2px solid var(--primary-color);
+}
+
+.professional-table th {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.professional-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-color);
+}
+
+.professional-table tr:hover {
+  background: var(--logo-color);
+}
+
+.professional-card {
+  background: var(--background-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 20px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.professional-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px var(--shadow-color);
+  border-color: var(--secondary-color);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

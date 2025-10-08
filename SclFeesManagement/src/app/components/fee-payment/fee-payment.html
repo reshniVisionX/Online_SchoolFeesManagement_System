@@ -1,0 +1,61 @@
+<div class="fee-controls">
+
+    <select [(ngModel)]="statusFilter" (change)="setStatusFilter(statusFilter)">
+      <option value="All">All</option>
+      <option value="Pending">Pending</option>
+      <option value="Paid">Paid</option>
+    </select>
+ 
+
+  <button type="button" (click)="toggleBalanceSort()" class="mybtn">
+ Balance
+    <span *ngIf="sortBalanceAsc">&#9650;</span>
+    <span *ngIf="sortBalanceAsc === false">&#9660;</span>
+  </button>
+  <button type="button" class="mybtn" (click)="viewTransaction()">Transactions</button>
+</div>
+
+
+<div class="fee-container">
+<table *ngIf="displayedFees().length > 0; else noData">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Class</th>
+        <th>Academic Year</th>
+        <th>Penalty</th>
+        <th>Total Fees</th>
+        <th>Waiver</th>
+        <th>Fees To Pay</th>
+        <th>Paid Amount</th>
+        <th>Balance</th>
+        <th>Status</th>
+        <th>LastUpdate</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fee of displayedFees()">
+         <td>{{ fee.sId }}</td>
+        <td>{{ fee.studentName }}</td>
+        <td>{{ fee.courseName }}</td>
+        <td>{{ fee.academicYear }}</td>
+        <td>{{ fee.penalty }}</td>
+        <td>{{ fee.totalFees }}</td>
+        <td>{{ fee.totWaiver }}</td>
+        <td>{{ fee.feesToPay }}</td>
+        <td>{{ fee.paidAmt }}</td>
+        <td>{{ fee.balance }}</td>
+        <td>{{ fee.isPending ? 'Pending' : 'Paid' }}</td>
+        <td>{{ fee.updatedAt | date:'medium' }}</td>
+      
+       
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p>No fee records found for this course.</p>
+  </ng-template>
+</div>

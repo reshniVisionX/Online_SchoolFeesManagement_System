@@ -1,0 +1,114 @@
+<div class="transaction-container">
+  <div class="transaction-header">
+    <h2>💳 Payment & Transaction Center</h2>
+    <p>Manage your fee payments and view transaction history</p>
+  </div>
+
+  <div class="transaction-content">
+    <!-- Fee Details Card -->
+    <div class="fee-details-card" *ngIf="feePayment()">
+      <div class="card-header">
+        <h3>📊 Fee Payment Details</h3>
+      </div>
+      
+      <div class="student-info">
+        <div class="student-image-container">
+          <img [src]="feePayment()?.student?.sImage ? 'data:image/jpeg;base64,' + feePayment()?.student?.sImage : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face'" 
+               alt="Student Image" class="student-image" />
+        </div>
+        <div class="student-details">
+          <h4>{{ feePayment()?.student?.sName }}</h4>
+          <p>{{ feePayment()?.course?.courseName }}</p>
+        </div>
+      </div>
+
+      <div class="fee-breakdown">
+        <div class="fee-item total">
+          <span class="label">Total Fees:</span>
+          <span class="amount">₹{{ feePayment()?.totalFees | number:'1.0-0' }}</span>
+        </div>
+        <div class="fee-item waiver">
+          <span class="label">Total Waiver:</span>
+          <span class="amount discount">-₹{{ feePayment()?.totWaiver | number:'1.0-0' }}</span>
+        </div>
+        <div class="fee-item paid">
+          <span class="label">Amount Paid:</span>
+          <span class="amount success">₹{{ feePayment()?.paidAmt | number:'1.0-0' }}</span>
+        </div>
+        <div class="fee-item pending">
+          <span class="label">Pending Amount:</span>
+          <span class="amount pending-amt">₹{{ feePayment()?.feesToPay | number:'1.0-0' }}</span>
+        </div>
+      </div>
+
+      <div class="last-payment">
+        <span class="label">Last Payment:</span>
+        <span class="date">{{ feePayment()?.updatedAt | date:'medium' }}</span>
+      </div>
+    </div>
+
+    <!-- Payment Form Card -->
+    <div class="payment-form-card">
+      <div class="card-header">
+        <h3>💰 Make Payment</h3>
+      </div>
+      
+      <div class="payment-form">
+        <div class="form-group">
+          <label>Payment Amount</label>
+          <input type="number" [(ngModel)]="amount" class="payment-input" placeholder="Enter amount to pay" />
+        </div>
+
+        <div class="form-group">
+          <label>Select Payment Method</label>
+          <div class="upi-options">
+            <label class="upi-option">
+              <input type="radio" name="upi" [(ngModel)]="selectedUPI" value="gpay" />
+              <span class="upi-icon">📱</span>
+              <span>Google Pay</span>
+            </label>
+            <label class="upi-option">
+              <input type="radio" name="upi" [(ngModel)]="selectedUPI" value="phonepe" />
+              <span class="upi-icon">📲</span>
+              <span>PhonePe</span>
+            </label>
+            <label class="upi-option">
+              <input type="radio" name="upi" [(ngModel)]="selectedUPI" value="paytm" />
+              <span class="upi-icon">💳</span>
+              <span>Paytm</span>
+            </label>
+            <label class="upi-option">
+              <input type="radio" name="upi" [(ngModel)]="selectedUPI" value="amazon" />
+              <span class="upi-icon">🛒</span>
+              <span>Amazon Pay</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>UPI PIN</label>
+          <input type="password" [(ngModel)]="pin" class="payment-input" maxlength="6" placeholder="Enter your UPI PIN" />
+        </div>
+
+        <button class="payment-button" (click)="submitPayment()">
+          <span class="btn-icon">🔒</span>
+          <span>Submit Payment</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction History -->
+  <div class="transaction-history">
+    <h3>📋 Recent Transactions</h3>
+    <div class="history-placeholder">
+      <p>Transaction history will be displayed here</p>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div *ngIf="toastMessage()" class="toast" [class.success]="toastSuccess()" [class.error]="!toastSuccess()">
+  <span class="toast-icon">{{ toastSuccess() ? '✅' : '❌' }}</span>
+  <span>{{ toastMessage() }}</span>
+</div>

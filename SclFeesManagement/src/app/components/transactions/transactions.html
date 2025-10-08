@@ -1,0 +1,35 @@
+<h2>Transactions for Course ID: {{ courseId() }}</h2>
+
+<div *ngIf="loading()">Loading...</div>
+<div *ngIf="error()">{{ error() }}</div>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>Student Name</th>
+      <th>Fee ID</th>
+      <th>Payment Type</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tx of transactions()">
+      <td>{{ tx.transId }}</td>
+      <td>{{ tx.student?.sName }}</td>
+      <td>{{ tx.feeId }}</td>
+      <td>{{ tx.payType }}</td> <!-- Enum prints as string -->
+      <td>{{ tx.amount | currency:'INR' }}</td>
+      <td
+        [ngStyle]="{
+          color: tx.status === 'Success' ? 'green' : (tx.status === 'Pending' ? 'orange' : 'red')
+        }"
+      >
+        {{ tx.status }}
+      </td>
+      <td>{{ tx.dateTime | date:'short' }}</td>
+    </tr>
+  </tbody>
+</table>

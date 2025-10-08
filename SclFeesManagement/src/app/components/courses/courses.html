@@ -1,0 +1,45 @@
+<div class="search-box">
+  <input
+    type="text"
+    placeholder="Search Course Name..."
+    [(ngModel)]="searchName"
+    (input)="onSearchInput()"
+  />
+
+  <select [(ngModel)]="selectedActive" (change)="onSearchInput()">
+    <option [value]="true">Active</option>
+    <option [value]="false">Inactive</option>
+  </select>
+  <button type="button" class="mybtn" >Create</button>
+</div>
+
+<div class="courses-container">
+  <div *ngIf="noCoursesMessage()" class="no-courses">{{ noCoursesMessage() }}</div>
+
+<div 
+  class="course-card" 
+  *ngFor="let course of courses()" 
+  (click)="fetchStudents(course.courseId)">
+  
+  <h3>{{ course.courseName }}</h3>
+  <p><strong>Started At:</strong> {{ course.createdAt | date:'mediumDate' }}</p>
+  <p>{{ course.isActive ? 'Active' : 'Inactive' }}</p>
+
+  <div class="course-btn">
+    <button 
+      type="button" 
+      class="mybtn" 
+      (click)="updateCourse(course.courseId); $event.stopPropagation()">
+      Update
+    </button>
+
+    <button 
+      type="button" 
+      class="mybtn" 
+      (click)="toggleStatus(course.courseId); $event.stopPropagation()">
+      Change Status
+    </button>
+  </div>
+</div>
+
+</div>

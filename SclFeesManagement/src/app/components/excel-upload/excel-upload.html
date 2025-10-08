@@ -1,0 +1,80 @@
+<div class="container">
+  <h2>Upload Student Excel</h2>
+  
+  <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+
+  <div *ngIf="excelData().length > 0">
+    <p>Rows ready for upload: {{ excelData().length }}</p>
+    <button (click)="uploadJson()">Upload JSON to API</button>
+  </div>
+
+  <table *ngIf="excelData().length > 0" border="1">
+    <thead>
+      <tr>
+        <th>sName</th>
+        <th>dob</th>
+        <th>category</th>
+        <th>Blood Grp</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>isSports</th>
+        <th>isMerit</th>
+        <th>isFG</th>
+        <th>isWaiver</th>
+        <th>Role</th>
+        <th>CourseId</th>
+      </tr>
+    </thead>
+   <tbody>
+  <tr *ngFor="let student of excelData(); let i = index">
+    <!-- Text inputs -->
+    <td><input [(ngModel)]="student.sName" (ngModelChange)="updateSignal(i, 'sName', $event)" /></td>
+    <td><input [(ngModel)]="student.dob" (ngModelChange)="updateSignal(i, 'dob', $event)" /></td>
+    <td>
+      <select [(ngModel)]="student.category" (ngModelChange)="updateSignal(i, 'category', $event)">
+        <option value="DayScholar">DayScholar</option>
+        <option value="Hostel">Hostel</option>
+      </select>
+    </td>
+
+    <!-- Editable bloodGrp, Address, Phone -->
+    <td ><input [(ngModel)]="student.bloodGrp" (ngModelChange)="updateSignal(i, 'bloodGrp', $event)" /></td>
+    <td ><input [(ngModel)]="student.parEmail" (ngModelChange)="updateSignal(i, 'parEmail', $event)" /></td>
+    <td><input [(ngModel)]="student.parAddress" (ngModelChange)="updateSignal(i, 'parAddress', $event)" /></td>
+    <td><input [(ngModel)]="student.parPhone" (ngModelChange)="updateSignal(i, 'parPhone', $event)" /></td>
+
+    <!-- Boolean dropdowns -->
+    <td>
+      <select [(ngModel)]="student.isSports" (ngModelChange)="updateSignal(i, 'isSports', $event)">
+        <option [ngValue]="true">TRUE</option>
+        <option [ngValue]="false">FALSE</option>
+      </select>
+    </td>
+    <td>
+      <select [(ngModel)]="student.isMerit" (ngModelChange)="updateSignal(i, 'isMerit', $event)">
+        <option [ngValue]="true">TRUE</option>
+        <option [ngValue]="false">FALSE</option>
+      </select>
+    </td>
+    <td>
+      <select [(ngModel)]="student.isFG" (ngModelChange)="updateSignal(i, 'isFG', $event)">
+        <option [ngValue]="true">TRUE</option>
+        <option [ngValue]="false">FALSE</option>
+      </select>
+    </td>
+    <td>
+      <select [(ngModel)]="student.isWaiver" (ngModelChange)="updateSignal(i, 'isWaiver', $event)">
+        <option [ngValue]="true">TRUE</option>
+        <option [ngValue]="false">FALSE</option>
+      </select>
+    </td>
+
+    <!-- Read-only -->
+    <td>{{student.roleId}}</td>
+    <td>{{student.courseId}}</td>
+  </tr>
+</tbody>
+
+  </table>
+</div>

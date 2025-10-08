@@ -1,0 +1,149 @@
+<div class="student-details-container" *ngIf="students()">
+  <div class="page-header">
+    <h1>Update Student Details: {{ students()?.sName }}</h1>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Left Side - Form -->
+    <div class="form-section">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-card">
+          <h3>📝 Basic Information</h3>
+          <div class="form-group">
+            <label>Name:</label>
+            <input type="text" [(ngModel)]="students()!.sName" name="sName" required />
+          </div>
+          <div class="form-group">
+            <label>DOB:</label>
+            <input type="date" [(ngModel)]="students()!.dob" name="dob" required />
+          </div>
+          <div class="form-group">
+            <label>Blood Group:</label>
+            <input type="text" [(ngModel)]="students()!.bloodGrp" name="bloodGrp" />
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>👨‍👩‍👧‍👦 Parent Information</h3>
+          <div class="form-group">
+            <label>Parent Address:</label>
+            <textarea [(ngModel)]="students()!.parAddress" name="parAddress" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Parent Email:</label>
+            <input type="email" [(ngModel)]="students()!.parEmail" name="parEmail" />
+          </div>
+          <div class="form-group">
+            <label>Parent Phone:</label>
+            <input type="text" [(ngModel)]="students()!.parPhone" name="parPhone" />
+          </div>
+        </div>
+
+        <div class="form-card" *ngIf="students()?.studentDetails">
+          <h3>🎓 Academic Details</h3>
+          <div class="form-group">
+            <label>Category:</label>
+            <select [(ngModel)]="students()!.studentDetails!.category" name="category">
+              <option [value]="0">Day Scholar</option>
+              <option [value]="1">Hostel</option>
+            </select>
+          </div>
+          
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="students()!.studentDetails!.isActive" name="isActive" />
+              Active Status
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="students()!.studentDetails!.isSports" name="isSports" />
+              Sports Quota
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="students()!.studentDetails!.isMerit" name="isMerit" />
+              Merit Scholar
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="students()!.studentDetails!.isFG" name="isFG" />
+              First Generation
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" [(ngModel)]="students()!.studentDetails!.isWaiver" name="isWaiver" />
+              Fee Waiver
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="mybtn">Update Student</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right Side - Information Display -->
+    <div class="info-section">
+      <div class="info-card" *ngIf="students()?.course">
+        <h3>📚 Course Information</h3>
+        <div class="info-item">
+          <span class="label">Course Name:</span>
+          <span class="value">{{ students()?.course?.courseName }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Course ID:</span>
+          <span class="value">#{{ students()?.course?.courseId }}</span>
+        </div>
+        
+        <h4>💰 Fee Structure</h4>
+        <div class="fee-list">
+          <div class="fee-item">
+            <span>Tuition Fees:</span>
+            <span>{{ students()?.course?.tutionFees | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="fee-item" *ngIf="students()?.course?.busFees">
+            <span>Bus Fees:</span>
+            <span>{{ students()?.course?.busFees | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="fee-item" *ngIf="students()?.course?.hostelFees">
+            <span>Hostel Fees:</span>
+            <span>{{ students()?.course?.hostelFees | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="fee-item" *ngIf="students()?.course?.donationFee">
+            <span>Donation Fee:</span>
+            <span>{{ students()?.course?.donationFee | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+        </div>
+
+        <h4>🎁 Available Waivers</h4>
+        <div class="waiver-list">
+          <div class="waiver-item" *ngIf="students()?.course?.sports">
+            <span>Sports Waiver:</span>
+            <span class="waiver-amount">-{{ students()?.course?.sports | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="waiver-item" *ngIf="students()?.course?.merit">
+            <span>Merit Waiver:</span>
+            <span class="waiver-amount">-{{ students()?.course?.merit | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="waiver-item" *ngIf="students()?.course?.waiver">
+            <span>General Waiver:</span>
+            <span class="waiver-amount">-{{ students()?.course?.waiver | currency:'INR':'symbol':'1.0-0' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card" *ngIf="students()?.role">
+        <h3>🔐 Role Information</h3>
+        <div class="info-item">
+          <span class="label">Role ID:</span>
+          <span class="value">#{{ students()?.role?.roleId }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Role Name:</span>
+          <span class="value">{{ students()?.role?.roleName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!students()" class="loading">
+  <p>Loading student details...</p>
+</div>

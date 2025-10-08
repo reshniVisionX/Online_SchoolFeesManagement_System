@@ -1,0 +1,40 @@
+<div class="profile-container" *ngIf="students() as student">
+  <h2 class="profile-title">{{student.sName}} Profile</h2>
+
+  <div class="profile-card">
+    <div class="profile-image">
+      <img src="https://paymyfee.com/assets/feature-main-1.png" alt="Student Image" />
+    </div>
+
+    <div class="profile-details">
+      <p><strong class="sideHeading">Name:</strong> {{ student.sName }}</p>
+      <p><strong class="sideHeading">Course:</strong> {{ student.course?.courseName }}</p>
+      <p><strong class="sideHeading">Date of Birth:</strong> {{ student.dob | date:'mediumDate' }}</p>
+      <p><strong class="sideHeading">Blood Group:</strong> {{ student.bloodGrp }}</p>
+      <p><strong class="sideHeading">Join Date:</strong> {{ student.studentDetails?.createdAt | date:'mediumDate' }}</p>
+
+      <div class="fee-section" *ngIf="students()?.studentDetails">
+        <h3 class="section-title">Fee Structure</h3>
+        <p><strong class="sideHeading">Tuition Fees:</strong> ₹{{ students()?.course?.tutionFees | number:'1.0-0' }}</p>
+        <p *ngIf="students()?.course?.donationFee"><strong class="sideHeading">Donation Fee:</strong> ₹{{ students()?.course?.donationFee | number:'1.0-0' }}</p>
+        <p *ngIf="students()?.course?.busFees"><strong class="sideHeading">Bus Fees:</strong> ₹{{ students()?.course?.busFees | number:'1.0-0' }}</p>
+        <p *ngIf="students()?.studentDetails?.category == 1"><strong class="sideHeading">Hostel Fees:</strong> ₹{{ students()?.course?.hostelFees | number:'1.0-0' }}</p>
+        
+        <div class="waivers-section" *ngIf="students()?.studentDetails?.isSports || students()?.studentDetails?.isMerit || students()?.studentDetails?.isFG || students()?.studentDetails?.isWaiver">
+          <h4 class="waiver-title">Active Waivers</h4>
+          <p *ngIf="students()?.studentDetails?.isSports"><strong class="sideHeading">Sports Waiver:</strong> -₹{{ students()?.course?.sports | number:'1.0-0' }}</p>
+          <p *ngIf="students()?.studentDetails?.isMerit"><strong class="sideHeading">Merit Waiver:</strong> -₹{{ students()?.course?.merit | number:'1.0-0' }}</p>
+          <p *ngIf="students()?.studentDetails?.isFG"><strong class="sideHeading">First Graduate Waiver:</strong> -₹{{ students()?.course?.fg | number:'1.0-0' }}</p>
+          <p *ngIf="students()?.studentDetails?.isWaiver"><strong class="sideHeading">General Waiver:</strong> -₹{{ students()?.course?.waiver | number:'1.0-0' }}</p>
+        </div>
+      </div>
+
+      <div class="receipt-btn">
+        <button type="button" class="mybtn" (click)="viewPayReceipt(student.sId)">View Receipt</button>
+        <button type="button" class="mybtn" (click)="downloadPayReceipt(student.sId)">Download Receipt</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-user-transaction></app-user-transaction>
